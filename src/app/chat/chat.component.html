@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-4 border-right">
+      <div class="settings-tray">
+        <img class="profile-image" src="{{cr_user.avatar}}" alt="Avatar img">
+        <span class="p-2">{{cr_user.name}}</span>
+        <a href="#"><span (click)="leaveGroup(cr_user.id,id_gr)" class="material-icons mt-2 float-end">logout</span></a>
+      </div>
+      <div class="search-box">
+        <div class="input-wrapper">
+          <i class="material-icons">search</i>
+          <input placeholder="Search here" type="text">
+        </div>
+      </div>
+      <div class="navbar-nav-scroll scrollbar-primary">
+        <div class="friend-drawer friend-drawer--onhover" *ngFor="let user of users" >
+          <img class="profile-image" src="{{user.avatar}}" alt="">
+          <div class="text">
+            <h4>{{user.name}}</h4>
+            <div *ngIf="user.is_active; else elseBlock">
+              <span class="material-icons"></span>
+              Online
+            </div>
+            <ng-template #elseBlock>Offline</ng-template>
+          </div>
+          <span class="time text-muted small">13:21</span>
+
+        </div>
+
+        <hr>
+
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="settings-tray">
+        <div class="friend-drawer no-gutters friend-drawer--grey">
+          <span class="material-icons">groups</span>
+          <div class="text">
+            <h4>Group</h4>
+            <p>Notify! ------->{{notification}}</p>
+          </div>
+
+
+
+        </div>
+      </div>
+      <div class="chat-panel">
+        <div class="navbar-nav-scroll scrollbar-primary">
+          <div class="row no-gutters" *ngFor="let ms of chat_gr">
+            <div class="col-md-3 offset-md-9" *ngIf="ms.sender_id===cr_user.id; else order">
+              <div class="chat-bubble chat-bubble--right">
+                {{ms.content}}
+              </div>
+            </div>
+            <ng-template #order>
+              <div class="col-md-3"><b>{{getUserById(ms.sender_id)?.name}}</b>
+                <div class="chat-bubble chat-bubble--left">
+
+                  {{ms.content}}
+                </div>
+
+              </div>
+            </ng-template>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="chat-box-tray">
+
+              <i class="material-icons">
+                comment
+              </i>
+              <input type="text" (change)="sent_ms(messageS.value)" placeholder="Type your message here..." #messageS>
+
+              <a (click)="sent_ms(messageS.value)" class="material-icons"> send</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+  </div>
+</div>
+</div>

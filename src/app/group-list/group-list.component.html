@@ -1,0 +1,18 @@
+<h1 class="align-content-center">Danh sách Group</h1>
+<table class="table table-striped">
+  <thead class="table-dark">
+  <tr>
+    <td>STT</td>
+    <td>Tên Group</td>
+    <td>Action</td>
+  </tr>
+  </thead>
+  <tbody class="table-active">
+  <tr *ngFor="let group of groups; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{group.name}}</td>
+    <td><a [routerLink]="['/group',group.id]">Join</a></td>
+  </tr>
+  </tbody>
+</table>
+<router-outlet></router-outlet>
