@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
     })
     this.user_form=this.fb.group({
       name: ['',Validators.required],
-      avatar: ['']
+      avatar: ['https://pngimg.com/uploads/avatar/avatar_PNG48.png']
     })
 
   }
