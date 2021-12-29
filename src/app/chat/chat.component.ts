@@ -4,6 +4,7 @@ import {UserService} from "../service/user.service";
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Message} from "../message";
 import {ChatService} from "../service/chat.service";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-chat',
@@ -16,7 +17,8 @@ export class ChatComponent implements OnInit {
   id_gr!: number;
   chat_gr: Message[] = []
   id_ms!: number;
-  notification=''
+  notification='';
+  searchText = '';
   msg: Message = {
     id: undefined,
     time: undefined,
@@ -84,7 +86,6 @@ export class ChatComponent implements OnInit {
     this.msg.content = content;
     this.msg.last_message = content;
     this.chat_gr.push(this.msg);
-    console.log(this.chat_gr)
     this.msg = {}
     this.chatService.sentmess(this.msg);
   }

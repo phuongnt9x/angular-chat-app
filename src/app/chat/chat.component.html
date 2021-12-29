@@ -9,11 +9,11 @@
       <div class="search-box">
         <div class="input-wrapper">
           <i class="material-icons">search</i>
-          <input placeholder="Search here" type="text">
+          <input placeholder="Search here" type="text" [(ngModel)]="searchText" >
         </div>
       </div>
       <div class="navbar-nav-scroll scrollbar-primary">
-        <div class="friend-drawer friend-drawer--onhover" *ngFor="let user of users" >
+        <div class="friend-drawer friend-drawer--onhover" *ngFor="let user of users | appFilter: searchText" >
           <img class="profile-image" src="{{user.avatar}}" alt="">
           <div class="text">
             <h4>{{user.name}}</h4>

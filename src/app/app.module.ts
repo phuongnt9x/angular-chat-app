@@ -6,22 +6,25 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from "@angular/material/slider";
 import { UserComponent } from './user/user.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ChatComponent } from './chat/chat.component';
 import { GroupListComponent } from './group-list/group-list.component';
+import {FilterPipe} from "./filter.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     ChatComponent,
-    GroupListComponent
+    GroupListComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
