@@ -53,7 +53,7 @@
               </div>
             </div>
             <ng-template #order>
-              <div class="col-md-3"><b>{{getUserById(ms.sender_id)?.name}}</b>
+              <div class="col-md-4"><b>{{getUserById(ms.sender_id)?.name}}</b>
                 <div class="chat-bubble chat-bubble--left">
 
                   {{ms.content}}
@@ -70,9 +70,11 @@
               <i class="material-icons">
                 comment
               </i>
+
               <input type="text" (change)="sent_ms(messageS.value)" placeholder="Type your message here..." #messageS>
 
               <a (click)="sent_ms(messageS.value)" class="material-icons"> send</a>
+
             </div>
           </div>
         </div>
