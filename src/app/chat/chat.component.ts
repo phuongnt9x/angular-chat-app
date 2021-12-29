@@ -16,7 +16,7 @@ export class ChatComponent implements OnInit {
   id_gr!: number;
   chat_gr: Message[] = []
   id_ms!: number;
-  notification!: string
+  notification=''
   msg: Message = {
     id: undefined,
     time: undefined,
@@ -37,6 +37,7 @@ export class ChatComponent implements OnInit {
       this.id_gr = Number(paramMap.get('id'));
     });
     this.cr_user = this.userService.current_user()
+    this.notification= this.cr_user.name +' has joined group'
     this.fk_user = this.userService.fake_user()
     this.users = this.userService.findUserGroup(this.id_gr)
     console.log(this.users)
@@ -97,12 +98,16 @@ export class ChatComponent implements OnInit {
     return this.users[0]
   }
   leaveGroup(id_user: number,id_gr:number){
-    let name=this.users.find(user=>{
-      user.id==id_user
-    })?.name
+    this.notification=''
+     for(let i=0;i<this.users.length;i++){
+       if(this.users[i].id==id_user){
+         this.notification+=this.users[i].name
+         break
+       }
+     }
     this.userService.deleteUserGroup(id_user,id_gr)
     // this.router.navigate(['']);
-    this.notification=name+ 'has left group'
+    this.notification+= ' has left group'
   }
 
 
